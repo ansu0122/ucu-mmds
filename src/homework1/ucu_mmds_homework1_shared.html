@@ -7502,7 +7502,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [175]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>findspark
@@ -7519,12 +7519,8 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Collecting joblibspark
-  Downloading joblibspark-0.5.3-py3-none-any.whl.metadata (979 bytes)
+<pre>Requirement already satisfied: joblibspark in /opt/conda/lib/python3.11/site-packages (0.5.3)
 Requirement already satisfied: joblib&gt;=0.14 in /opt/conda/lib/python3.11/site-packages (from joblibspark) (1.3.2)
-Downloading joblibspark-0.5.3-py3-none-any.whl (17 kB)
-Installing collected packages: joblibspark
-Successfully installed joblibspark-0.5.3
 </pre>
 </div>
 </div>
@@ -8331,7 +8327,7 @@ Wall time: 9h 2min 18s
 <span class="k">with</span> <span class="n">parallel_backend</span><span class="p">(</span><span class="s1">'spark'</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">best_model_tfidf</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'/home/jovyan/work/tfidf-model'</span><span class="p">)</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="n">tfidf_precession</span> <span class="o">=</span> <span class="n">evaluate_lsh_model</span> <span class="p">(</span>
+<span class="n">tfidf_precision</span> <span class="o">=</span> <span class="n">evaluate_lsh_model</span> <span class="p">(</span>
     <span class="n">dataset</span> <span class="o">=</span> <span class="n">test_data_tfidf</span><span class="p">,</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">best_model_tfidf</span><span class="p">,</span>
     <span class="n">input_col</span> <span class="o">=</span> <span class="n">vector_space_col</span><span class="p">,</span>
@@ -8349,10 +8345,10 @@ Wall time: 9h 2min 18s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [92]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'test precession </span><span class="si">{</span><span class="n">tfidf_precession</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'test precision </span><span class="si">{</span><span class="n">tfidf_precision</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8365,24 +8361,8 @@ Wall time: 9h 2min 18s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>test precession 78%
+<pre>test precision 78%
 </pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">model_save_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'/home/jovyan/work/ftidf-model-</span><span class="si">{</span><span class="n">tfidf_precession</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">'</span>
-<span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">best_model_tfidf</span><span class="p">])</span>
-<span class="n">pipeline_model</span><span class="o">.</span><span class="n">write</span><span class="p">()</span><span class="o">.</span><span class="n">overwrite</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model_save_path</span><span class="p">)</span>
-</pre></div>
 </div>
 </div>
 </div>
@@ -8548,12 +8528,12 @@ Wall time: 1h 42min 30s
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [152]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># evaluate the best model</span>
@@ -8561,7 +8541,7 @@ Wall time: 1h 42min 30s
 <span class="k">with</span> <span class="n">parallel_backend</span><span class="p">(</span><span class="s1">'spark'</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">best_model_w2v</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'/home/jovyan/work/w2v-model'</span><span class="p">)</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="n">w2v_precession</span> <span class="o">=</span> <span class="n">evaluate_lsh_model</span> <span class="p">(</span>
+<span class="n">w2v_precision</span> <span class="o">=</span> <span class="n">evaluate_lsh_model</span> <span class="p">(</span>
     <span class="n">dataset</span> <span class="o">=</span> <span class="n">test_data_w2v</span><span class="p">,</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">best_model_w2v</span><span class="p">,</span>
     <span class="n">input_col</span> <span class="o">=</span> <span class="n">vector_space_col</span><span class="p">,</span>
@@ -8569,8 +8549,20 @@ Wall time: 1h 42min 30s
     <span class="n">ground_truth</span> <span class="o">=</span> <span class="n">test_y_w2v</span><span class="p">,</span>
     <span class="n">num_neighbors</span> <span class="o">=</span> <span class="n">num_neighbors</span>
 <span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'test precession </span><span class="si">{</span><span class="n">w2v_precession</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'test precision </span><span class="si">{</span><span class="n">w2v_precision</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8582,28 +8574,10 @@ Wall time: 1h 42min 30s
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/opt/conda/lib/python3.11/site-packages/joblibspark/backend.py:110: UserWarning: Spark local mode doesn't support stage-level scheduling.
-  warnings.warn("Spark local mode doesn't support stage-level scheduling.")
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>test precession 90%
+<pre>test precision 90%
 </pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
@@ -8938,7 +8912,7 @@ Wall time: 6min 12s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [172]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [178]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
@@ -8947,7 +8921,7 @@ Wall time: 6min 12s
 <span class="k">with</span> <span class="n">parallel_backend</span><span class="p">(</span><span class="s1">'spark'</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">best_model_wiki</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'/home/jovyan/work/wiki-model'</span><span class="p">)</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="n">wiki_precession</span> <span class="o">=</span> <span class="n">evaluate_lsh_model</span><span class="p">(</span>
+<span class="n">wiki_precision</span> <span class="o">=</span> <span class="n">evaluate_lsh_model</span><span class="p">(</span>
                                     <span class="n">dataset</span> <span class="o">=</span> <span class="n">test_data_wiki</span><span class="p">,</span>
                                     <span class="n">model</span> <span class="o">=</span> <span class="n">best_model_wiki</span><span class="p">,</span>
                                     <span class="n">input_col</span> <span class="o">=</span> <span class="n">vector_space_col</span><span class="p">,</span>
@@ -8956,7 +8930,7 @@ Wall time: 6min 12s
                                     <span class="n">num_neighbors</span> <span class="o">=</span> <span class="n">num_neighbors</span>
                                     <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'test precession </span><span class="si">{</span><span class="n">wiki_precession</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'test precision </span><span class="si">{</span><span class="n">wiki_precision</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8977,9 +8951,9 @@ Wall time: 6min 12s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>test precession 95.71%
-CPU times: user 866 ms, sys: 206 ms, total: 1.07 s
-Wall time: 30.3 s
+<pre>test precision 95.82%
+CPU times: user 1.18 s, sys: 225 ms, total: 1.4 s
+Wall time: 30.9 s
 </pre>
 </div>
 </div>
@@ -9001,12 +8975,12 @@ Wall time: 30.3 s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [173]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [180]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 
-<span class="n">wiki_precession2</span> <span class="o">=</span> <span class="n">evaluate_lsh_model</span><span class="p">(</span>
+<span class="n">wiki_precision2</span> <span class="o">=</span> <span class="n">evaluate_lsh_model</span><span class="p">(</span>
                                       <span class="n">dataset</span> <span class="o">=</span> <span class="n">test_data_wiki</span><span class="p">,</span>
                                       <span class="n">model</span> <span class="o">=</span> <span class="n">best_model_tfidf</span><span class="p">,</span>
                                       <span class="n">input_col</span> <span class="o">=</span> <span class="n">vector_space_col</span><span class="p">,</span>
@@ -9014,7 +8988,7 @@ Wall time: 30.3 s
                                       <span class="n">ground_truth</span> <span class="o">=</span> <span class="n">test_y_wiki</span><span class="p">,</span>
                                       <span class="n">num_neighbors</span> <span class="o">=</span> <span class="n">num_neighbors</span>
                                       <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'test precession </span><span class="si">{</span><span class="n">wiki_precession2</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'test precision </span><span class="si">{</span><span class="n">wiki_precision2</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9027,9 +9001,9 @@ Wall time: 30.3 s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>test precession 95.93%
-CPU times: user 9.74 s, sys: 202 ms, total: 9.94 s
-Wall time: 48.5 s
+<pre>test precision 95.71%
+CPU times: user 9.87 s, sys: 190 ms, total: 10.1 s
+Wall time: 49.3 s
 </pre>
 </div>
 </div>
@@ -9068,7 +9042,7 @@ Wall time: 48.5 s
 </li>
 <li>Dataset: Airbnb Barcelona listings</li>
 <li>Train/Test split: 80%/20% (15650/3832)</li>
-<li>Test precession: 78%</li>
+<li>Test precision: 78%</li>
 </ul>
 <h4 id="Experiment-2:">Experiment 2:<a class="anchor-link" href="#Experiment-2:">¶</a></h4><ul>
 <li>Model Type: LSH (BucketedRandomProjectionLSH)</li>
@@ -9085,7 +9059,7 @@ Wall time: 48.5 s
 </li>
 <li>Dataset: Airbnb Barcelona listings</li>
 <li>Train/Test split: 20%/80% (3832/15650)</li>
-<li>Test precession: 90%</li>
+<li>Test precision: 90%</li>
 </ul>
 <h4 id="Experiment-3:">Experiment 3:<a class="anchor-link" href="#Experiment-3:">¶</a></h4><ul>
 <li>Model Type: LSH (BucketedRandomProjectionLSH)</li>
@@ -9102,7 +9076,7 @@ Wall time: 48.5 s
 </li>
 <li>Dataset: Ukrainian Wikipedia April 2019</li>
 <li>Train/Test split: 80%/20% (793/182)</li>
-<li>Test precession: 95.71%</li>
+<li>Test precision: 95.82%</li>
 </ul>
 </div>
 </div>
@@ -9130,7 +9104,7 @@ Wall time: 48.5 s
 <li>Machine: Mac Pro M1 16 RAM</li>
 <li>Parallel jobs: 5</li>
 <li>Fine-tunning time: Wall time: 6min 12s</li>
-<li>Evaluation time: Wall time: 30.3 s</li>
+<li>Evaluation time: Wall time: 30.9 s</li>
 </ul>
 </div>
 </div>
@@ -9156,8 +9130,8 @@ Wall time: 48.5 s
 <ul>
 <li>Model Type: LSH (BucketedRandomProjectionLSH) fine-tuned on Airbnb data</li>
 <li>Dataset: Ukrainian Wikipedia April 2019</li>
-<li>Test precession 95.93%</li>
-<li>Evaluation time: Wall time: 48.5 s</li>
+<li>Test precision 95.71%</li>
+<li>Evaluation time: Wall time: 49.3 s</li>
 </ul>
 <p>Despite the fact that both datasets have different contextual meanings, we are achieving surprisingly good performance when evaluating the model on the Wiki dataset using an LSH model fine-tuned on Airbnb data. This is likely because the optimal number of hash tables for Airbnb is much larger than for the Wiki data, resulting in a certain degree of overfitting. However, it is evident that as the number of hash tables increases, the evaluation time also increases, which could be problematic in real-world scenarios.</p>
 </div>
