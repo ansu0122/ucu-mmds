@@ -8,3 +8,12 @@ In order to run the pyspark in jupyter notebook locally on your machine
 ![alt text](image.png)
 
 All models fine-tuned during the experiments are copied to the ./local directory
+
+To create conda env we can run
+> conda env create -f conda.yaml
+
+To activate conda env
+> conda activate mmds-env
+
+To add the conda env to Jupyter as a new kernel
+> python -m ipykernel install --user --name mmds-env --display-name "mmds"
