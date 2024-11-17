@@ -18,15 +18,11 @@ for event in EventSource(url):
         except ValueError:
             continue
 
-        print(type(change))
-        print(change)
-
         if change.get('type') == None or change.get('type') != 'edit':
             continue
     
-        if change['wiki'] == wiki:
-            users[change['user']] = change['user']
-            print('{user} edited page {title} in {wiki}'.format(**change))
+        if change['wiki'] == wiki and change['bot'] == False:
+            print(change)
             counter += 1
             if counter > maxEvents:
                 break
