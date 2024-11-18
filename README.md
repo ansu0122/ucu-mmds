@@ -17,6 +17,9 @@ All models fine-tuned during the experiments are copied to the ./local directory
 To create conda env we can run
 > conda env create -f conda.yaml
 
+To update conda env
+> conda env update --name mmds-env --file conda.yaml --prune
+
 To activate conda env
 > conda activate mmds-env
 
